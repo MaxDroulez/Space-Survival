@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://assets/player/player_walk1.png" type="Texture" id=2]
+[ext_resource path="res://assets/player/player_walk2.png" type="Texture" id=3]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "walk",
+"speed": 3.0
+} ]
+
+[node name="Player" type="Node2D" index="0"]
+
+script = ExtResource( 1 )
+SPEED = 10.0
+currentPlanet = null
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
+
+frames = SubResource( 1 )
+animation = "walk"
+frame = 1
+playing = true
+
+
