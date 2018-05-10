@@ -6,10 +6,11 @@ const ZOOM_STRENGTH = 0.1;
 const MAX_ZOOM = 0.3;
 
 export (float) var SPEED;
-export (NodePath) var startingPlanet;
+export (NodePath) var STARTING_PLANET;
 
 var currentPlanet;
 var angleOnPlanet = 0;
+var planetPosition = 0;
 var verticalHeight = 0;
 var verticalVelocity = 0;
 
@@ -18,9 +19,8 @@ var doAction;
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
-	currentPlanet = get_node(startingPlanet);
+	currentPlanet = get_node(STARTING_PLANET);
 	setStateGrounded();
-	print(currentPlanet);
 
 func _input(event):
 	if (event.is_action("dezoom")):
@@ -41,11 +41,13 @@ func _input(event):
 
 func _process(delta):
 	if(Input.is_action_pressed("ui_left")):
-		angleOnPlanet -= SPEED * delta;
+#		angleOnPlanet -= SPEED * delta;
+		planetPosition -= SPEED * delta;
 		$AnimatedSprite.flip_h = true;
 		
 	if(Input.is_action_pressed("ui_right")):
-		angleOnPlanet += SPEED * delta;
+#		angleOnPlanet += SPEED * delta;
+		planetPosition += SPEED * delta;
 		$AnimatedSprite.flip_h = false;
 		
 	doAction.call_func(delta);
@@ -78,6 +80,9 @@ func inAir(delta):
 
 
 func placeOnPlanet():
-	position = currentPlanet.getPlacePosition(angleOnPlanet, verticalHeight);
-	rotation = angleOnPlanet + PI / 2;
+#	print(planetPosition);
+	rotation = currentPlanet.getPlaceAngle(planetPosition);
+	position = currentPlanet.getPlacePosition(rotation, verticalHeight);
+	rotation += PI / 2;
+#	print(rotation);
 	

@@ -7,7 +7,6 @@
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
-radius = null
 gravity = null
 
 [node name="Sprite" type="Sprite" parent="." index="0"]

@@ -3,23 +3,23 @@
 [ext_resource path="res://Planet.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node" index="0"]
 
 [node name="Planet2" parent="." index="0" instance=ExtResource( 1 )]
 
 position = Vector2( 1171.43, 391.933 )
-radius = 200.0
 gravity = 200.0
 
 [node name="Planet1" parent="." index="1" instance=ExtResource( 1 )]
 
 position = Vector2( 731.105, 317.127 )
-radius = 30.0
+scale = Vector2( 0.1, 0.1 )
 gravity = 50.0
 
 [node name="Player" parent="." index="2" instance=ExtResource( 2 )]
 
 position = Vector2( 502.725, 192.381 )
-startingPlanet = NodePath("../Planet1")
+SPEED = 125.0
+STARTING_PLANET = NodePath("../Planet2")
 
 
