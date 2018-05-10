@@ -9,15 +9,17 @@
 
 position = Vector2( 1171.43, 391.933 )
 radius = 200.0
+gravity = 200.0
 
 [node name="Planet1" parent="." index="1" instance=ExtResource( 1 )]
 
 position = Vector2( 731.105, 317.127 )
-radius = 100.0
+radius = 30.0
+gravity = 50.0
 
 [node name="Player" parent="." index="2" instance=ExtResource( 2 )]
 
-position = Vector2( 502.725, 193.741 )
-currentPlanet = NodePath("../Planet1")
+position = Vector2( 502.725, 192.381 )
+startingPlanet = NodePath("../Planet1")
 
 

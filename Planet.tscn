@@ -8,10 +8,11 @@
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 radius = null
+gravity = null
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
-scale = Vector2( 0.5, 0.5 )
+scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
