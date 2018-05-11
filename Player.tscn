@@ -26,6 +26,7 @@ position = Vector2( 0, -49 )
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 1 )
 animation = "walk"
+frame = 1
 playing = true
 _sections_unfolded = [ "Transform" ]
 
@@ -53,5 +54,6 @@ drag_margin_bottom = 0.2
 editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
+_sections_unfolded = [ "Transform" ]
 
 

@@ -20,6 +20,6 @@ gravity = 50.0
 
 position = Vector2( 502.725, 192.381 )
 SPEED = 125.0
-STARTING_PLANET = NodePath("../Planet2")
+STARTING_PLANET = NodePath("../Planet1")
 
 

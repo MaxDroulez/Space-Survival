@@ -9,7 +9,6 @@ export (float) var SPEED;
 export (NodePath) var STARTING_PLANET;
 
 var currentPlanet;
-var angleOnPlanet = 0;
 var planetPosition = 0;
 var verticalHeight = 0;
 var verticalVelocity = 0;
@@ -52,9 +51,6 @@ func _process(delta):
 		
 	doAction.call_func(delta);
 	
-#	if(Input.is_action_just_pressed("dezoom")):
-#		$Camera2D.zoom += 0.1;
-#		print($Camera2D.zoom);
 	placeOnPlanet();
 
 
