@@ -8,11 +8,25 @@
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 gravity = null
+revolutionTime = null
+_referencePlanet = null
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
 scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="GravityCollider" type="Area2D" parent="." index="1"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 2
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Transform" ]
 
 

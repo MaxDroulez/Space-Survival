@@ -1,0 +1,11 @@
+Space-Survival :
+		
+
+GIT
+
+
+	status
+	pull
+	add .
+	commit -m "blahblah"
+	push

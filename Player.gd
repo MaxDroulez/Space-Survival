@@ -1,11 +1,11 @@
 extends Node2D
 
-const JUMP_FORCE = 100;
 
 const ZOOM_STRENGTH = 0.1;
 const MAX_ZOOM = 0.3;
 
 export (float) var SPEED;
+export (float) var JUMP_FORCE;
 export (NodePath) var STARTING_PLANET;
 
 var currentPlanet;
@@ -19,6 +19,7 @@ func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
 	currentPlanet = get_node(STARTING_PLANET);
+	print(currentPlanet);
 	setStateGrounded();
 
 func _input(event):
@@ -34,8 +35,6 @@ func _input(event):
 		if(camera.zoom.x < MAX_ZOOM):
 			camera.zoom.x = MAX_ZOOM;
 			camera.zoom.y = MAX_ZOOM;
-		
-	
 
 
 func _process(delta):
@@ -62,7 +61,6 @@ func grounded(delta):
 		verticalVelocity = JUMP_FORCE;
 		setStateInAir();
 
-
 func setStateInAir():
 	doAction = funcref(self, "inAir");
 
@@ -74,11 +72,20 @@ func inAir(delta):
 		verticalHeight = 0;
 		setStateGrounded();
 
-
 func placeOnPlanet():
-#	print(planetPosition);
 	rotation = currentPlanet.getPlaceAngle(planetPosition);
 	position = currentPlanet.getPlacePosition(rotation, verticalHeight);
 	rotation += PI / 2;
-#	print(rotation);
 	
+func _on_GravityCollider_area_entered(area):
+	currentPlanet = area.get_node("../");
+	verticalHeight = position.distance_to(currentPlanet.position) - currentPlanet.radius;
+	verticalVelocity = 0;
+	planetPosition = currentPlanet.getPositionOnPlanet(position.angle_to_point(currentPlanet.position));
+	setStateInAir();
+	
+	pass # replace with function body
+
+func _on_GravityCollider_area_exited(area):
+	print("out");
+	pass # replace with function body
